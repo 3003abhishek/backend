@@ -1,0 +1,62 @@
+{
+ "products":[
+
+{
+    "product_name":"Jeans",
+    "category":"Clothing",
+    "price":1000,
+    "stock":100
+},
+{
+    "product_name":"Butter",
+    "category":"Foods",
+    "price":100,
+    "stock":10
+},
+{
+    "product_name":"Shirts",
+    "category":"Clothing",
+    "price":1400,
+    "stock":1000
+},
+{
+    "product_name":"Cooker",
+    "category":"Utensils",
+    "price":2000,
+    "stock":15
+},
+
+{
+    "product_name":"Skirts",
+    "category":"Clothing",
+    "price":1000,
+    "stock":100
+},
+{
+    "product_name":"Bread",
+    "category":"Foods",
+    "price":20,
+    "stock":50
+},
+{
+    "product_name":"Washing Machine",
+    "category":"Electronics",
+    "price":20000,
+    "stock":8
+},
+{
+    "product_name":"Television",
+    "category":"Electronics",
+    "price":25000,
+    "stock":20
+}
+
+
+
+
+
+
+
+ ]
+
+}
