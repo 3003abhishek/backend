@@ -48,6 +48,17 @@ app.post("/tours",(req,res)=>{
 });
 
 
+app.delete("/tours/:id",(req,res)=>{
+    let id=req.params.id;
+    if(id>=tours.length){
+      res.status(404).json({"status":fail,"message":"Wrong Id"});
+    }
+    else{
+      res.send(204).json({"status":"Successful","data":null});
+    }
+});
+
+
 app.listen(8080,()=>{
     console.log("Your port is running at 8080");
 })
