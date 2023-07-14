@@ -68,6 +68,36 @@ let deleteTour=(req,res)=>{
    }
 }
 
+let getUsers=(req,res)=>{
+   res.status(500).json({
+      "status":"Error",
+      "Payload":"This request is not created yet"
+
+   })
+}
+
+let createUsers=(req,res)=>{
+   res.status(500).json({
+      "stutus":"error",
+      "Payload":"This request is not created yet"
+   })
+};
+
+
+let getUser=(req,res)=>{
+   res.status(500).json({
+      "status":"error",
+      "payload":"This request is not created yet"
+   })
+};
+
+let deleteUser=(req,res)=>{
+   res.status(500).json({
+      "status":"error",
+      "payload":"This request is not created yet"
+   })
+}
+
 
 
 //Routes
@@ -91,6 +121,10 @@ let deleteTour=(req,res)=>{
 
 app.route("/tours").get(getTours).post(createTour);
 app.route("/tours/:id").get(getTour).delete(deleteTour);
+app.route("/users").get(getUsers).post(createUsers);
+app.route("users/:id").get(getUser).delete(deleteUser);
+
+
 
 
 
