@@ -6,12 +6,27 @@ const app=express();
 
 app.use(express.json());//This is used to post the json data in the file
 
+
+app.use((req,res,next)=>{
+  console.log("Started using middleware bro");
+  next();
+});
+
+
+app.use((req,res,next)=>{
+   req.requestTime=new Date().toISOString();
+   next();
+});
+
 let tours=JSON.parse(fs.readFileSync("./dev_data/tours.json","utf-8"));
 // console.log(tours);
 
 app.get("/tours",(req,res)=>{
+
+   console.log(req.requestTime);
    res.status(200).json({
     "status":"Success",
+    "requestDate":req.requestTime,
     tours
    });
 });
@@ -31,7 +46,7 @@ app.get("/tours/:id",(req,res)=>{
    // }
 
 
-})
+});
 
 
 app.post("/tours",(req,res)=>{
