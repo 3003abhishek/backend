@@ -1,9 +1,11 @@
 const express=require("express");
 const fs=require("fs");
 
+const morgan=require("morgan");
+
 
 const app=express();
-
+app.use(morgan("dev"));
 app.use(express.json());//This is used to post the json data in the file
 
 
@@ -21,7 +23,8 @@ app.use((req,res,next)=>{
 let tours=JSON.parse(fs.readFileSync("./dev_data/tours.json","utf-8"));
 // console.log(tours);
 
-app.get("/tours",(req,res)=>{
+//Routing functions
+ let getTours=(req,res)=>{
 
    console.log(req.requestTime);
    res.status(200).json({
@@ -29,27 +32,20 @@ app.get("/tours",(req,res)=>{
     "requestDate":req.requestTime,
     tours
    });
-});
+}
 
-
-app.get("/tours/:id",(req,res)=>{
+let getTour=(req,res)=>{
    let id=req.params.id;
-   // if(id>23||!id){
-   //    res.json({"status":"error","message":"Please enter a valid id "});
-   // }
-   // else{
+   
        let tour=tours.filter((el)=>{
          return el._id===id;
       });
 
       res.json({"status":"Success","data":tour});
-   // }
+  
+}
 
-
-});
-
-
-app.post("/tours",(req,res)=>{
+let createTour=(req,res)=>{
    let data=req.body;
 
    tours.push(data);
@@ -60,18 +56,43 @@ app.post("/tours",(req,res)=>{
    
    )
    
-});
+}
+
+let deleteTour=(req,res)=>{
+   let id=req.params.id;
+   if(id>=tours.length){
+     res.status(404).json({"status":fail,"message":"Wrong Id"});
+   }
+   else{
+     res.send(204).json({"status":"Successful","data":null});
+   }
+}
 
 
-app.delete("/tours/:id",(req,res)=>{
-    let id=req.params.id;
-    if(id>=tours.length){
-      res.status(404).json({"status":fail,"message":"Wrong Id"});
-    }
-    else{
-      res.send(204).json({"status":"Successful","data":null});
-    }
-});
+
+//Routes
+
+//SomeWhat better way of creating routes
+
+
+// app.get("/tours",getTours);
+
+
+// app.get("/tours/:id",getTour);
+
+
+// app.post("/tours",createTour);
+
+
+// app.delete("/tours/:id",deleteTour);
+
+
+//We can write the above routes in more better way by chaining the same
+
+app.route("/tours").get(getTours).post(createTour);
+app.route("/tours/:id").get(getTour).delete(deleteTour);
+
+
 
 
 app.listen(8080,()=>{
