@@ -3,8 +3,12 @@ const fs=require("fs");
 
 const morgan=require("morgan");
 
-
+const tourRouter=express.Router();
+const userRouter=express.Router();
 const app=express();
+
+app.use("/tours",tourRouter);
+app.use("/users",userRouter);
 app.use(morgan("dev"));
 app.use(express.json());//This is used to post the json data in the file
 
@@ -119,11 +123,11 @@ let deleteUser=(req,res)=>{
 
 //We can write the above routes in more better way by chaining the same
 
-app.route("/tours").get(getTours).post(createTour);
-app.route("/tours/:id").get(getTour).delete(deleteTour);
-app.route("/users").get(getUsers).post(createUsers);
-app.route("users/:id").get(getUser).delete(deleteUser);
-
+tourRouter.route("/").get(getTours).post(createTour);
+tourRouter.route("/:id").get(getTour).delete(deleteTour);
+userRouter.route("/").get(getUsers).post(createUsers);
+userRouter.route("/:id").get(getUser).delete(deleteUser);
+// In this case we are replacing the app with the midddleware tourRouter and userRouter.
 
 
 
