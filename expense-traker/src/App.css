@@ -1,0 +1,44 @@
+.container{
+  /* margin-left: 50%;
+  margin-top:5%; */
+  margin: auto;
+  width: 500px;
+
+  /* border: 1px solid red; */
+}
+
+.balance{
+  display:flex;
+  justify-content: space-between;
+ 
+}
+
+.header{
+  display: flex;
+  justify-content: center;
+}
+
+.details{
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.history_stack{
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  /* border-radius: 8%; */
+  height: 30px;
+
+}
+
+
+
+.history{
+  margin-top: 10px;
+}
