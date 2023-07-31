@@ -1,9 +1,9 @@
 import React from  "react";
 
 
-function TransactionButton(){
+function TransactionButton({handleClick}){
     return (
-        <button>Add Transaction</button>
+        <button onClick={handleClick}>Add Transaction</button>
     )
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 
-function History({ data }) {
+function History({ props }) {
+    console.log(props);
     return (
         <div className="history">
 
@@ -9,7 +10,7 @@ function History({ data }) {
 
             {
 
-                data ? data.map((el) => {
+props ?props.map((el) => {
                     return (
                         <div className="history_stack">
                             <p>{el.cause}</p>

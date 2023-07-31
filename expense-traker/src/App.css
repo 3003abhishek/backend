@@ -19,13 +19,19 @@
 }
 
 .details{
+  padding: 5%;
   display: flex;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: wheat;
 }
+
 
 .history_stack{
 
+  
+  padding: 5px;
+  border-bottom: 2px solid brown;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,6 +40,7 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   /* border-radius: 8%; */
   height: 30px;
+  background-color: bisque;
 
 }
 
@@ -41,4 +48,20 @@
 
 .history{
   margin-top: 10px;
+}
+
+
+.transaction_box{
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+
+}
+
+.income{
+  padding-right: 160px;
+  border-right: 1px solid;
+}
+input{
+  margin-bottom: 10px;
 }

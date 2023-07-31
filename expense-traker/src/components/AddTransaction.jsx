@@ -1,14 +1,14 @@
 import React from "react";
 
 
-function AddTransaction(){
+function AddTransaction({handleText,handleAmount}){
     return (
-         <div>
+         <div className="transaction_box">
         <h4>Add New Transaction</h4>
-        <h6>Text</h6>
-        <input placeholder="Enter the text"/>
-        <h6>Amount</h6>
-        <input placeholder="Enter the amount"/>
+        <lebel>Text</lebel>
+        <input onChange={(e)=>handleText(e.target.value)} placeholder="Enter the text"/>
+        <lebel>Amount</lebel>
+        <input onChange={(e)=>handleAmount(e.target.value)} placeholder="Enter the amount"/>
 
 
          </div>

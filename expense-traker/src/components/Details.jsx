@@ -1,17 +1,17 @@
 import React from "react";
 
 
-function Details(){
+function Details({income,expense}){
     return (
       <div className="details">
-        <div>
+        <div className="income">
             <h4>Income</h4>
-            <p>$1000</p>
+            <p>${income}</p>
         </div>
 
-        <div>
+        <div className="expense">
             <h4>Expense</h4>
-            <p>$500</p>
+            <p>${expense}</p>
         </div>
 
 

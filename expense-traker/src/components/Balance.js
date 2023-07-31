@@ -1,11 +1,11 @@
 import React from "react";
 
 
-function Balance(){
+function Balance({balance}){
     return (
         <div className="balance">
             <h2>Your Balance</h2>
-            <h4>$ 500</h4>
+            <h4>${balance}</h4>
         </div>
     )
 }

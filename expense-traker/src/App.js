@@ -5,20 +5,55 @@ import Header from './components/Header';
 import History from './components/History';
 import AddTransaction from './components/AddTransaction';
 import TransactionButton from './components/TransactionButton';
+
+import { useState } from 'react';
 function App() {
 
-  let data=[{cause:"Daru",amount:500},{cause:"book",amount:200}]
+  let [history, setHistory] = useState([]);
+  let [text, setText] = useState("");
+
+  let [amount, setAmount] = useState(0);
+  let [income,setIncome]=useState(0);
+  let [expense,setExpense]=useState(0);
+  let [balance,setBalance]=useState(0);
+
+  let madeTransaction = () => {
+
+    setHistory([...history, { cause: text, amount }]);
+    console.log(history);
+     setBalance(balance+Number(amount));
+    if(amount>0){
+      setIncome(income+Math.abs(Number(amount)))
+    }
+    else{
+     setExpense(expense+Math.abs(Number(amount)));
+    }
+
+  }
+
+  let handleText = (x) => {
+    setText(x);
+    //  console.log(text);
+  }
+
+  let handleAmount = (y) => {
+    setAmount(y);
+    // console.log(y);
+  }
+
+  
+
   return (
     <div className="container">
-    <Header/>
-    <div className='main_box'>
-         <Balance/>
-         <Details/>
-         <History data={data}/>
-         <AddTransaction/>
-         <TransactionButton/>
+      <Header />
+      <div className='main_box'>
+        <Balance balance={balance} />
+        <Details income={income} expense={expense} />
+        <History props={history} />
+        <AddTransaction handleText={handleText} handleAmount={handleAmount} />
+        <TransactionButton handleClick={madeTransaction} />
 
-    </div>
+      </div>
     </div>
   );
 }
