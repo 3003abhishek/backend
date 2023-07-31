@@ -20,7 +20,7 @@ function App() {
   let madeTransaction = () => {
 
     setHistory([...history, { cause: text, amount }]);
-    console.log(history);
+    // console.log(history);
      setBalance(balance+Number(amount));
     if(amount>0){
       setIncome(income+Math.abs(Number(amount)))
@@ -41,6 +41,18 @@ function App() {
     // console.log(y);
   }
 
+
+  let handleOnDelete=(id)=>{
+    // console.log(id);
+       let filterhistory=history.filter((el,index)=>{
+        return index!=id;
+       });
+
+       console.log(filterhistory);
+
+       setHistory(filterhistory);
+  }
+
   
 
   return (
@@ -49,7 +61,7 @@ function App() {
       <div className='main_box'>
         <Balance balance={balance} />
         <Details income={income} expense={expense} />
-        <History props={history} />
+        <History history={history} handleOnDelete={handleOnDelete} />
         <AddTransaction handleText={handleText} handleAmount={handleAmount} />
         <TransactionButton handleClick={madeTransaction} />
 

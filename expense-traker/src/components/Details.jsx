@@ -14,6 +14,8 @@ function Details({income,expense}){
             <p>${expense}</p>
         </div>
 
+        <div></div>
+
 
       </div>
     )

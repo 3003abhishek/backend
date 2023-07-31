@@ -1,7 +1,9 @@
 import React from "react";
+import { FaTrash } from 'react-icons/fa';
 
-function History({ props }) {
-    console.log(props);
+function History({ history,handleOnDelete }) {
+    // console.log(history);
+    // console.log(handleOnDelete);
     return (
         <div className="history">
 
@@ -10,11 +12,16 @@ function History({ props }) {
 
             {
 
-props ?props.map((el) => {
+history ?history.map((el,index) => {
                     return (
-                        <div className="history_stack">
+                        <div key={index} className="history_stack">
                             <p>{el.cause}</p>
                             <p>{el.amount}</p>
+                            <button onClick={()=>handleOnDelete(index)}>
+                            <FaTrash  style={{ cursor: 'pointer'}}></FaTrash>
+                            </button>
+
+                            
 
                         </div>
                     )
@@ -32,3 +39,5 @@ props ?props.map((el) => {
 }
 
 export default History;
+
+// onClick={handleOnDelete(index)}
